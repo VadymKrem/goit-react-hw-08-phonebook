@@ -1,10 +1,13 @@
 import { Component } from 'react';
 import { Container } from './App.styled';
 import { nanoid } from 'nanoid';
+import { saveLocalStorage, loadLocalStorage } from './Utils/onLocalStorage';
 import { Section } from './Section/Section';
 import { ContactList } from './ContactList/ContactList';
 import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
+
+const LS_CONTACTS_KEY = 'contacts';
 
 export class App extends Component {
   state = {
@@ -16,6 +19,20 @@ export class App extends Component {
     ],
     filter: '',
   };
+
+    componentDidMount() {
+    const localStorageContacts = loadLocalStorage(LS_CONTACTS_KEY);
+
+    if (localStorageContacts) this.setState({ contacts: localStorageContacts });
+  }
+
+  componentDidUpdate(_, prevState) {
+    const { contacts } = this.state;
+
+    if (prevState.contacts !== contacts) {
+      saveLocalStorage(LS_CONTACTS_KEY, contacts);
+    }
+  }
 
   onFormSubmit = data => {
     const newContact = {
