@@ -1,11 +1,24 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { getContactsFilter } from 'Redux/selectors';
+import { setStatusFilter } from 'Redux/filterSlice';
 import { FilterBlock, InputFilter } from './Filter.styled';
 import PropTypes from 'prop-types';
 
-export const Filter = ({ filter, onChange }) => {
+export const Filter = () => {
+  const dispatch = useDispatch();
+  const filter = getContactsFilter;
+  const handleFilterChange = filter => dispatch(setStatusFilter(filter));
+
   return (
     <FilterBlock>
       Find contacts by name
-      <InputFilter type="text" value={filter} onChange={onChange} />
+      <InputFilter
+        type="text"
+        name="filter"
+        placeholder="Enter contact name"
+        value={filter}
+        onChange={handleFilterChange}
+      />
     </FilterBlock>
   );
 };
