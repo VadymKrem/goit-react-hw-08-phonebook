@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 export const Filter = () => {
   const dispatch = useDispatch();
-  const filter = getContactsFilter;
+  const filter = useSelector(getContactsFilter);
   const handleFilterChange = filter => dispatch(setStatusFilter(filter));
 
   return (
