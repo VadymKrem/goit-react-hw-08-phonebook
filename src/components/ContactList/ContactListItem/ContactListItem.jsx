@@ -24,5 +24,4 @@ ContactListItem.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   number: PropTypes.string,
-  onDelete: PropTypes.func,
 };
