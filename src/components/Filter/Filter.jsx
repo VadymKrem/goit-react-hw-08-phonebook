@@ -2,12 +2,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getContactsFilter } from 'Redux/selectors';
 import { setStatusFilter } from 'Redux/filterSlice';
 import { FilterBlock, InputFilter } from './Filter.styled';
-// import PropTypes from 'prop-types';
 
 export const Filter = () => {
   const dispatch = useDispatch();
   const filter = useSelector(getContactsFilter);
-  // const handleFilterChange = filter => dispatch(setStatusFilter(filter));
   const handleFilterChange = evt => dispatch(setStatusFilter(evt.target.value));
 
   return (
@@ -23,8 +21,3 @@ export const Filter = () => {
     </FilterBlock>
   );
 };
-
-// Filter.propTypes = {
-//   filter: PropTypes.string,
-//   onChange: PropTypes.func,
-// };

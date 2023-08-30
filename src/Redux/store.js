@@ -21,8 +21,6 @@ const rootReducer = combineReducers({
 
 const persistConfig = { key: 'contacts', storage, blacklist: ['filter'] };
 
-// const persistedReducer = persistReducer(persistConfig, rootReducer);
-
 export const store = configureStore({
   reducer: persistReducer(persistConfig, rootReducer),
 
