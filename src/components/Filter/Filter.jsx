@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getContactsFilter } from 'Redux/selectors';
 import { setStatusFilter } from 'Redux/filterSlice';
 import { FilterBlock, InputFilter } from './Filter.styled';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ export const Filter = () => {
   );
 };
 
-Filter.propTypes = {
-  filter: PropTypes.string,
-  onChange: PropTypes.func,
-};
+// Filter.propTypes = {
+//   filter: PropTypes.string,
+//   onChange: PropTypes.func,
+// };
