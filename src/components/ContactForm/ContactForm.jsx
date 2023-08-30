@@ -22,8 +22,8 @@ export const ContactForm = () => {
     setName('');
     setNumber('');
   };
-  const handleChangeName = evt => setName(evt.target.value);
-  const handleChangeNumber = evt => setNumber(evt.target.value);
+  const handleChangeName = event => setName(event.target.value);
+  const handleChangeNumber = event => setNumber(event.target.value);
   return (
     <Form onSubmit={dataSubmitForm}>
       <Label>

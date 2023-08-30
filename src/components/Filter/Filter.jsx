@@ -7,7 +7,8 @@ import PropTypes from 'prop-types';
 export const Filter = () => {
   const dispatch = useDispatch();
   const filter = useSelector(getContactsFilter);
-  const handleFilterChange = filter => dispatch(setStatusFilter(filter));
+  // const handleFilterChange = filter => dispatch(setStatusFilter(filter));
+  const handleFilterChange = evt => dispatch(setStatusFilter(evt.target.value));
 
   return (
     <FilterBlock>
