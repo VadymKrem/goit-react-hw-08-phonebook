@@ -26,7 +26,7 @@ export const ContactForm = () => {
     // setName('');
     // setNumber('');
     dispatch(addContact({ name: formName, phone: formNumber }));
-    // event.target.reser();
+    event.target.reset();
   };
   // const handleChangeName = event => setName(event.target.value);
   // const handleChangeNumber = event => setNumber(event.target.value);
