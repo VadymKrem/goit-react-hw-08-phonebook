@@ -1,13 +1,9 @@
-// import { useState } from 'react';
-
 import { Form, Label, Input, Button } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContactsList } from 'Redux/selectors';
 import { addContact } from 'Redux/operations';
 
 export const ContactForm = () => {
-  // const [name, setName] = useState('');
-  // const [number, setNumber] = useState('');
   const dispatch = useDispatch();
   const contacts = useSelector(selectContactsList);
 
@@ -18,13 +14,15 @@ export const ContactForm = () => {
     const formName = event.target.elements.name.value;
     const formNumber = event.target.elements.number.value;
 
-    const searchContact = contacts.find(contact => contact.name === formName);
+    const searchContact = contacts.find(
+      contact => contact.name.toLowerCase() === formName
+    );
     if (searchContact) {
       alert(`${formName} is already in contacts`);
       return false;
     }
 
-    dispatch(addContact({ name: formName, phone: formNumber }));
+    dispatch(addContact({ name: formName, number: formNumber }));
     form.reset();
   };
 
