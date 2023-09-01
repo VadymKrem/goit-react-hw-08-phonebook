@@ -14,6 +14,7 @@ export const ContactForm = () => {
   const dataSubmitForm = event => {
     event.preventDefault();
 
+    const form = event.target;
     const formName = event.target.elements.name.value;
     const formNumber = event.target.elements.number.value;
 
@@ -22,14 +23,11 @@ export const ContactForm = () => {
       alert(`${formName} is already in contacts`);
       return false;
     }
-    // dispatch(addContact({ name, number }));
-    // setName('');
-    // setNumber('');
+
     dispatch(addContact({ name: formName, phone: formNumber }));
-    event.target.reset();
+    form.reset();
   };
-  // const handleChangeName = event => setName(event.target.value);
-  // const handleChangeNumber = event => setNumber(event.target.value);
+
   return (
     <Form onSubmit={dataSubmitForm}>
       <Label>
