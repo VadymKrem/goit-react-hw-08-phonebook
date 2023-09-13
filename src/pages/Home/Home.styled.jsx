@@ -5,5 +5,5 @@ export const ContentPageContainer = styled.div`
   height: 100dvb;
 
   border-radius: 32px 32px 0 0;
-  background-color: #f9f9f9;
+  background-color: #e5f37c;
 `;

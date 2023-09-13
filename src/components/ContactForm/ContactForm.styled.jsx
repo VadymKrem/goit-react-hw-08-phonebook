@@ -33,6 +33,6 @@ export const Button = styled.button`
   width: 100px;
   border: 2px solid grey;
   border-radius: 2px;
-  background-color: inherit;
+  /* background-color: inherit; */
   background-color: #f1d50b;
 `;

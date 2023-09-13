@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addContact, deleteContact, fetchContacts } from './operations';
+import { fetchContacts, addContact, deleteContact } from './operations';
+import { logOut } from 'Redux/auth/operations';
 
-const handleOnPending = state => {
+const handlePending = state => {
   state.isLoading = true;
 };
 
-const handleOnRejected = (state, action) => {
+const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
 };
@@ -20,32 +21,35 @@ const contactsSlice = createSlice({
   name: 'contacts',
   initialState: contactsInitialState,
   extraReducers: {
-    [fetchContacts.pending]: handleOnPending,
+    [fetchContacts.pending]: handlePending,
     [fetchContacts.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
       state.items = action.payload;
-      state.isLoading = false;
-      state.error = null;
     },
-    [fetchContacts.rejected]: handleOnRejected,
-
-    [addContact.pending]: handleOnPending,
+    [fetchContacts.rejected]: handleRejected,
+    [addContact.pending]: handlePending,
     [addContact.fulfilled](state, action) {
-      state.items.push(action.payload);
       state.isLoading = false;
       state.error = null;
+      state.items.push(action.payload);
     },
-    [addContact.rejected]: handleOnRejected,
-
-    [deleteContact.pending]: handleOnPending,
+    [addContact.rejected]: handleRejected,
+    [deleteContact.pending]: handlePending,
     [deleteContact.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
       const index = state.items.findIndex(
         task => task.id === action.payload.id
       );
       state.items.splice(index, 1);
-      state.isLoading = false;
-      state.error = null;
     },
-    [deleteContact.rejected]: handleOnRejected,
+    [deleteContact.rejected]: handleRejected,
+    [logOut.fulfilled](state) {
+      state.items = [];
+      state.error = null;
+      state.isLoading = false;
+    },
   },
 });
 

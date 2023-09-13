@@ -1,12 +1,8 @@
 import styled from '@emotion/styled';
 
-export const List = styled.ul`
-  padding-left: 50px;
-`;
+export const ContactsList = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 
-export const ButtonDelete = styled.button`
-  width: 80px;
-  border: 1px solid grey;
-  border-radius: 4px;
-  background-color: inherit;
+  grid-gap: 24px;
 `;
